@@ -3,6 +3,9 @@
 Blog de **lugares turísticos de la Patagonia Argentina** desarrollado con **Django** y **SQLite**.
 Incluye CRUD completo de 3 modelos, búsqueda con formularios HTML, página `/about` y autenticación
 (registro / login / logout).
+<img width="1413" height="908" alt="image" src="https://github.com/user-attachments/assets/9f4e207f-b1e0-4da1-8f04-8c6e5d3609e2" />
+
+
 
 ---
 
