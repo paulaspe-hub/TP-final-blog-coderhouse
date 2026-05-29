@@ -29,4 +29,41 @@
         <p class="text-muted">Todavía no hay posts sobre este lugar.</p>
     {% endfor %}
 </div>
+<style>
+    .list-group-item {
+    background: rgba(255,255,255,0.10) !important;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.15) !important;
+
+    color: white !important;
+
+    margin-bottom: 12px;
+
+    border-radius: 16px !important;
+
+    transition: all .25s ease;
+}
+
+.list-group-item:hover {
+    background: rgba(255,255,255,0.18) !important;
+
+    transform: translateY(-2px);
+
+    color: white !important;
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,0.25);
+}
+
+.list-group-item strong {
+    color: white;
+}
+
+.list-group-item small {
+    color: rgba(255,255,255,0.8) !important;
+}
+</style>
 {% endblock %}

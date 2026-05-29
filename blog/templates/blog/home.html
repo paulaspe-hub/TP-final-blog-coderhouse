@@ -2,34 +2,111 @@
 {% block title %}Inicio | Patagonia Blog{% endblock %}
 
 {% block content %}
-<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
+
+<div class="hero-section p-5 mb-4 rounded-4">
     <h1 class="display-5 fw-bold">Patagonia Argentina 🇦🇷</h1>
+
     <p class="col-md-8 fs-5">
         Descubrí los lugares turísticos más increíbles de la Patagonia: glaciares, montañas,
         lagos y pueblos de ensueño desde Neuquén hasta Tierra del Fuego.
     </p>
-    <a href="{% url 'lugar_list' %}" class="btn btn-primary btn-lg">Ver lugares</a>
-    <a href="{% url 'post_list' %}" class="btn btn-outline-primary btn-lg">Leer posts</a>
+
+    <div class="mt-4">
+        <a href="{% url 'lugar_list' %}" class="btn btn-primary btn-lg me-2">
+            Ver lugares
+        </a>
+
+        <a href="{% url 'post_list' %}" class="btn btn-outline-primary btn-lg">
+            Leer posts
+        </a>
+    </div>
 </div>
 
-<div class="row text-center mb-4">
-    <div class="col"><div class="card shadow-sm"><div class="card-body"><h2>{{ total_lugares }}</h2><p class="text-muted mb-0">Lugares</p></div></div></div>
-    <div class="col"><div class="card shadow-sm"><div class="card-body"><h2>{{ total_posts }}</h2><p class="text-muted mb-0">Posts</p></div></div></div>
-    <div class="col"><div class="card shadow-sm"><div class="card-body"><h2>{{ total_tipos }}</h2><p class="text-muted mb-0">Tipos de lugar</p></div></div></div>
+<div class="row text-center mb-5 g-4">
+    <div class="col-md-4">
+        <div class="card glass-card shadow-sm">
+            <div class="card-body py-4">
+                <h2 class="fw-bold">{{ total_lugares }}</h2>
+                <p class="mb-0">Lugares</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card glass-card shadow-sm">
+            <div class="card-body py-4">
+                <h2 class="fw-bold">{{ total_posts }}</h2>
+                <p class="mb-0">Posts</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card glass-card shadow-sm">
+            <div class="card-body py-4">
+                <h2 class="fw-bold">{{ total_tipos }}</h2>
+                <p class="mb-0">Tipos de lugar</p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<h3>Últimos posts</h3>
-<div class="list-group">
+<h3 class="mb-3">Últimos posts</h3>
+
+<div class="list-group glass-list">
     {% for post in ultimos_posts %}
-        <a href="{% url 'post_detail' post.pk %}" class="list-group-item list-group-item-action">
+        <a href="{% url 'post_detail' post.pk %}"
+           class="list-group-item list-group-item-action">
+
             <div class="d-flex justify-content-between">
                 <strong>{{ post.titulo }}</strong>
-                <small class="text-muted">{{ post.creado|date:"d/m/Y" }}</small>
+                <small>{{ post.creado|date:"d/m/Y" }}</small>
             </div>
-            <small class="text-muted">{{ post.lugar.nombre }}</small>
+
+            <small>{{ post.lugar.nombre }}</small>
         </a>
     {% empty %}
-        <p class="text-muted">Todavía no hay posts. ¡Creá el primero!</p>
+        <p class="empty-posts">
+            Todavía no hay posts. ¡Creá el primero!
+        </p>
     {% endfor %}
 </div>
+<style>
+    .list-group-item {
+    background: rgba(255,255,255,0.10) !important;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.15) !important;
+
+    color: white !important;
+
+    margin-bottom: 12px;
+
+    border-radius: 16px !important;
+
+    transition: all .25s ease;
+}
+
+.list-group-item:hover {
+    background: rgba(255,255,255,0.18) !important;
+
+    transform: translateY(-2px);
+
+    color: white !important;
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,0.25);
+}
+
+.list-group-item strong {
+    color: white;
+}
+
+.list-group-item small {
+    color: rgba(255,255,255,0.8) !important;
+}
+</style>
 {% endblock %}
+

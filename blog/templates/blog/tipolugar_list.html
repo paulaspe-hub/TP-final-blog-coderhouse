@@ -40,4 +40,49 @@
     {% endfor %}
     </tbody>
 </table>
+<style>
+    .glass-table {
+    overflow: hidden;
+    border-radius: 18px;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: rgba(255,255,255,0.10);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-table thead th {
+    background: rgba(20,184,166,0.25);
+    color: white;
+
+    border: none;
+
+    padding: 18px;
+}
+
+.glass-table tbody td {
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    border-color: rgba(255,255,255,0.08);
+
+    padding: 18px;
+}
+
+.glass-table tbody tr:hover td {
+    background: rgba(255,255,255,0.18);
+}
+
+.glass-table strong {
+    color: white;
+}
+
+.table-responsive {
+    border-radius: 18px;
+    overflow: hidden;
+}
+</style>
 {% endblock %}

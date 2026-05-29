@@ -6,7 +6,7 @@
     <div class="card-body">
         <h1 class="card-title">{{ post.titulo }}</h1>
         <p class="text-muted">
-            📍 <a href="{% url 'lugar_detail' post.lugar.pk %}">{{ post.lugar.nombre }}</a>
+             <a href="{% url 'lugar_detail' post.lugar.pk %}">{{ post.lugar.nombre }}</a>
             · por {{ post.autor.username }} · {{ post.creado|date:"d/m/Y H:i" }}
             {% if not post.publicado %}<span class="badge bg-warning text-dark">Borrador</span>{% endif %}
         </p>

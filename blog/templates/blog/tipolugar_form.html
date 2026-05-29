@@ -1,22 +1,72 @@
 {% extends "base.html" %}
-{% block title %}{% if form.instance.pk %}Editar{% else %}Nuevo{% endif %} tipo de lugar{% endblock %}
+{% block title %}
+    {% if form.instance.pk %}Editar{% else %}Nuevo{% endif %} tipo de lugar
+{% endblock %}
 
 {% block content %}
-<div class="card shadow-sm">
-    <div class="card-body">
-        <h1 class="card-title">{% if form.instance.pk %}Editar{% else %}Nuevo{% endif %} tipo de lugar</h1>
-        <form method="post" novalidate>
-            {% csrf_token %}
-            {% for field in form %}
-                <div class="mb-3">
-                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                    {{ field }}
-                    {% if field.errors %}<div class="text-danger small">{{ field.errors|striptags }}</div>{% endif %}
-                </div>
-            {% endfor %}
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{% url 'tipolugar_list' %}" class="btn btn-secondary">Cancelar</a>
-        </form>
+
+<div class="glass-card p-4 mx-auto" style="max-width: 700px;">
+
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">
+            {% if form.instance.pk %}
+                Editar tipo de lugar
+            {% else %}
+                Nuevo tipo de lugar
+            {% endif %}
+        </h1>
+
+        <p class="text-muted">
+            Completá la información del tipo de lugar turístico.
+        </p>
     </div>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="mb-4">
+
+                <label
+                    class="form-label fw-semibold text-white"
+                    for="{{ field.id_for_label }}"
+                >
+                    {{ field.label }}
+                </label>
+
+                {{ field }}
+
+                {% if field.help_text %}
+                    <div class="form-text text-light">
+                        {{ field.help_text }}
+                    </div>
+                {% endif %}
+
+                {% if field.errors %}
+                    <div class="text-danger small mt-2">
+                        {{ field.errors|striptags }}
+                    </div>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+
+        <div class="d-flex gap-2 justify-content-end">
+
+            <a href="{% url 'tipolugar_list' %}"
+               class="btn btn-outline-light">
+                Cancelar
+            </a>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Guardar
+            </button>
+
+        </div>
+
+    </form>
+
 </div>
+
 {% endblock %}
