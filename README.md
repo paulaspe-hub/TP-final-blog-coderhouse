@@ -100,7 +100,7 @@ Relaciones: `Lugar → TipoLugar` (FK) y `Post → Lugar` / `Post → User` (FK)
 
 ---
 
-## 🌐 Mapa de rutas / endpoints
+## Mapa de rutas / endpoints
 
 | Método | URL | Vista | Descripción |
 |---|---|---|---|
@@ -127,7 +127,7 @@ Relaciones: `Lugar → TipoLugar` (FK) y `Post → Lugar` / `Post → User` (FK)
 
 ---
 
-## 🔎 Búsqueda
+## Búsqueda
 
 - **Lugares** (`/lugares/`): formulario HTML con campo de texto + selects de provincia y tipo.
   Consulta el ORM con `Q(nombre__icontains=...) | Q(descripcion__icontains=...)` y filtros por `provincia` y `tipo`.
@@ -135,7 +135,7 @@ Relaciones: `Lugar → TipoLugar` (FK) y `Post → Lugar` / `Post → User` (FK)
 
 ---
 
-## 🔐 Autenticación
+## Autenticación
 
 - Sistema de `django.contrib.auth`.
 - Registro propio (`RegistroForm` basado en `UserCreationForm`).
@@ -144,7 +144,7 @@ Relaciones: `Lugar → TipoLugar` (FK) y `Post → Lugar` / `Post → User` (FK)
 
 ---
 
-## 📁 Árbol de archivos
+## Árbol de archivos
 
 ```
 blog-python/
