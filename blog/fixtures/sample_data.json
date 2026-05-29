@@ -1,0 +1,116 @@
+[
+  {
+    "model": "blog.tipolugar",
+    "pk": 1,
+    "fields": {
+      "nombre": "Glaciar",
+      "slug": "glaciar",
+      "descripcion": "Grandes masas de hielo en movimiento, típicas del sur patagónico."
+    }
+  },
+  {
+    "model": "blog.tipolugar",
+    "pk": 2,
+    "fields": {
+      "nombre": "Parque Nacional",
+      "slug": "parque-nacional",
+      "descripcion": "Áreas naturales protegidas con flora y fauna autóctona."
+    }
+  },
+  {
+    "model": "blog.tipolugar",
+    "pk": 3,
+    "fields": {
+      "nombre": "Ciudad",
+      "slug": "ciudad",
+      "descripcion": "Centros urbanos turísticos de la Patagonia."
+    }
+  },
+  {
+    "model": "blog.tipolugar",
+    "pk": 4,
+    "fields": {
+      "nombre": "Reserva Natural",
+      "slug": "reserva-natural",
+      "descripcion": "Zonas de conservación de fauna marina y terrestre."
+    }
+  },
+  {
+    "model": "blog.lugar",
+    "pk": 1,
+    "fields": {
+      "nombre": "Glaciar Perito Moreno",
+      "slug": "glaciar-perito-moreno",
+      "provincia": "santa_cruz",
+      "tipo": 1,
+      "descripcion": "Uno de los glaciares más impresionantes del mundo, ubicado en el Parque Nacional Los Glaciares, cerca de El Calafate. Famoso por sus desprendimientos de hielo.",
+      "mejor_epoca": "Primavera y verano (octubre a marzo)",
+      "creado": "2026-01-10T12:00:00Z"
+    }
+  },
+  {
+    "model": "blog.lugar",
+    "pk": 2,
+    "fields": {
+      "nombre": "El Chaltén",
+      "slug": "el-chalten",
+      "provincia": "santa_cruz",
+      "tipo": 3,
+      "descripcion": "Capital nacional del trekking, a los pies del Cerro Fitz Roy. Punto de partida para senderos hacia la Laguna de los Tres.",
+      "mejor_epoca": "Verano (diciembre a febrero)",
+      "creado": "2026-01-11T12:00:00Z"
+    }
+  },
+  {
+    "model": "blog.lugar",
+    "pk": 3,
+    "fields": {
+      "nombre": "San Carlos de Bariloche",
+      "slug": "san-carlos-de-bariloche",
+      "provincia": "rio_negro",
+      "tipo": 3,
+      "descripcion": "Ciudad junto al lago Nahuel Huapi, rodeada de montañas. Famosa por el chocolate, el cerro Catedral y el Circuito Chico.",
+      "mejor_epoca": "Invierno para esquí, verano para lagos",
+      "creado": "2026-01-12T12:00:00Z"
+    }
+  },
+  {
+    "model": "blog.lugar",
+    "pk": 4,
+    "fields": {
+      "nombre": "Ushuaia",
+      "slug": "ushuaia",
+      "provincia": "tierra_del_fuego",
+      "tipo": 3,
+      "descripcion": "La ciudad más austral del mundo, conocida como el 'fin del mundo'. Puerta de entrada a la Antártida y al Canal Beagle.",
+      "mejor_epoca": "Verano (diciembre a marzo)",
+      "creado": "2026-01-13T12:00:00Z"
+    }
+  },
+  {
+    "model": "blog.lugar",
+    "pk": 5,
+    "fields": {
+      "nombre": "Península Valdés",
+      "slug": "peninsula-valdes",
+      "provincia": "chubut",
+      "tipo": 4,
+      "descripcion": "Reserva natural Patrimonio de la Humanidad, cerca de Puerto Madryn. Ideal para avistaje de ballenas francas, pingüinos y lobos marinos.",
+      "mejor_epoca": "Junio a diciembre (ballenas)",
+      "creado": "2026-01-14T12:00:00Z"
+    }
+  },
+  {
+    "model": "blog.lugar",
+    "pk": 6,
+    "fields": {
+      "nombre": "Parque Nacional Nahuel Huapi",
+      "slug": "parque-nacional-nahuel-huapi",
+      "provincia": "neuquen",
+      "tipo": 2,
+      "descripcion": "El parque nacional más antiguo de Argentina, con bosques andino-patagónicos, lagos y montañas compartido entre Neuquén y Río Negro.",
+      "mejor_epoca": "Todo el año",
+      "creado": "2026-01-15T12:00:00Z"
+    }
+  }
+]
