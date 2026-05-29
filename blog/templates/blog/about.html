@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Acerca de | Patagonia Blog{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="card-title">Acerca de mí</h1>
+        <p class="lead">
+            ¡Hola! Soy un/a apasionado/a por viajar y recorrer la Patagonia Argentina.
+        </p>
+        <p>
+            Este blog nació para compartir reseñas, recomendaciones y experiencias sobre los
+            destinos turísticos más impresionantes del sur argentino: el
+            <strong>Glaciar Perito Moreno</strong> en El Calafate, los cerros de
+            <strong>El Chaltén</strong>, los lagos de <strong>Bariloche</strong>,
+            la fauna de <strong>Puerto Madryn</strong> y el fin del mundo en
+            <strong>Ushuaia</strong>.
+        </p>
+        <p>
+            El sitio fue desarrollado con <strong>Django</strong> y <strong>SQLite</strong>
+            como proyecto de ejemplo de un blog turístico con CRUD completo, búsqueda y
+            autenticación de usuarios.
+        </p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}

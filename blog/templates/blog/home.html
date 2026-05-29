@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Inicio | Patagonia Blog{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
+    <h1 class="display-5 fw-bold">Patagonia Argentina 🇦🇷</h1>
+    <p class="col-md-8 fs-5">
+        Descubrí los lugares turísticos más increíbles de la Patagonia: glaciares, montañas,
+        lagos y pueblos de ensueño desde Neuquén hasta Tierra del Fuego.
+    </p>
+    <a href="{% url 'lugar_list' %}" class="btn btn-primary btn-lg">Ver lugares</a>
+    <a href="{% url 'post_list' %}" class="btn btn-outline-primary btn-lg">Leer posts</a>
+</div>
+
+<div class="row text-center mb-4">
+    <div class="col"><div class="card shadow-sm"><div class="card-body"><h2>{{ total_lugares }}</h2><p class="text-muted mb-0">Lugares</p></div></div></div>
+    <div class="col"><div class="card shadow-sm"><div class="card-body"><h2>{{ total_posts }}</h2><p class="text-muted mb-0">Posts</p></div></div></div>
+    <div class="col"><div class="card shadow-sm"><div class="card-body"><h2>{{ total_tipos }}</h2><p class="text-muted mb-0">Tipos de lugar</p></div></div></div>
+</div>
+
+<h3>Últimos posts</h3>
+<div class="list-group">
+    {% for post in ultimos_posts %}
+        <a href="{% url 'post_detail' post.pk %}" class="list-group-item list-group-item-action">
+            <div class="d-flex justify-content-between">
+                <strong>{{ post.titulo }}</strong>
+                <small class="text-muted">{{ post.creado|date:"d/m/Y" }}</small>
+            </div>
+            <small class="text-muted">{{ post.lugar.nombre }}</small>
+        </a>
+    {% empty %}
+        <p class="text-muted">Todavía no hay posts. ¡Creá el primero!</p>
+    {% endfor %}
+</div>
+{% endblock %}
