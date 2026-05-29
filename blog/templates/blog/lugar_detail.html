@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ lugar.nombre }} | Patagonia Blog{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="card-title">{{ lugar.nombre }}</h1>
+        <p class="text-muted">
+            {{ lugar.get_provincia_display }} · {{ lugar.tipo.nombre }}
+        </p>
+        <p>{{ lugar.descripcion|linebreaks }}</p>
+        {% if lugar.mejor_epoca %}
+            <p><strong>Mejor época para visitar:</strong> {{ lugar.mejor_epoca }}</p>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'lugar_update' lugar.pk %}" class="btn btn-outline-primary">Editar</a>
+            <a href="{% url 'lugar_delete' lugar.pk %}" class="btn btn-outline-danger">Eliminar</a>
+        {% endif %}
+        <a href="{% url 'lugar_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+
+<h3 class="mt-4">Posts sobre este lugar</h3>
+<div class="list-group">
+    {% for post in lugar.posts.all %}
+        <a href="{% url 'post_detail' post.pk %}" class="list-group-item list-group-item-action">{{ post.titulo }}</a>
+    {% empty %}
+        <p class="text-muted">Todavía no hay posts sobre este lugar.</p>
+    {% endfor %}
+</div>
+{% endblock %}
