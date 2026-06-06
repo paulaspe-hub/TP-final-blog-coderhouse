@@ -5,19 +5,35 @@ Blog de lugares turísticos de la Patagonia Argentina.
 Base de datos: SQLite (configuración estándar de Django).
 """
 
+import os
 from pathlib import Path
 
-# Rutas dentro del proyecto: BASE_DIR / "subdir".
+import environ
+from django.contrib.messages import constants as messages
+
+# Rutas dentro del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ADVERTENCIA DE SEGURIDAD: mantené esta clave en secreto en producción.
-SECRET_KEY = "django-insecure-cambiar-esta-clave-en-produccion-patagonia-2026"
+# Inicializa django-environ
+env = environ.Env(
+    DEBUG=(bool, False),
+)
 
-# ADVERTENCIA DE SEGURIDAD: no ejecutes con DEBUG=True en producción.
-DEBUG = True
+# Lee el archivo .env si existe
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+# Seguridad
+SECRET_KEY = env(
+    "SECRET_KEY",
+    default="django-insecure-cambiar-esta-clave-en-produccion-patagonia-2026",
+)
 
+DEBUG = env("DEBUG")
+
+ALLOWED_HOSTS = env.list(
+    "ALLOWED_HOSTS",
+    default=["127.0.0.1", "localhost"],
+)
 
 # Definición de aplicaciones
 INSTALLED_APPS = [
@@ -32,6 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -61,16 +78,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "patagonia_blog.wsgi.application"
 
-
 # Base de datos: SQLite
-# https://docs.djangoproject.com/en/stable/ref/settings/#databases
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
@@ -88,30 +102,28 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internacionalización
 LANGUAGE_CODE = "es-ar"
+
 TIME_ZONE = "America/Argentina/Buenos_Aires"
+
 USE_I18N = True
 USE_TZ = True
 
-
-# Archivos estáticos (CSS, JavaScript, imágenes)
+# Archivos estáticos
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Tipo de campo de clave primaria por defecto
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-# Autenticación: redirecciones de login/logout
+# Autenticación
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
-# Mensajes: integración con clases de Bootstrap
-from django.contrib.messages import constants as messages  # noqa: E402
-
+# Mensajes Bootstrap
 MESSAGE_TAGS = {
     messages.DEBUG: "secondary",
     messages.INFO: "info",
